@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        *{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            display:flex;
+            width: 100%;
+            flex-direction: column;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        .header{
+            display: flex;
+            position: fixed;
+            padding: 5px 5% 5px 15% ;
+            justify-content: space-between;
+            width: 80%;
+            z-index: 1;
+            height: 60px;
+            background-color: white;
+        }
+        .header h3{
+            margin:auto 1%;
+        }
+        .sub-container{
+            padding-top: 70px;
+            display: flex;          
+        }
+        .photo{
+            border: 1px solid lightgray;
+            border-radius: 100px;
+            width: 110px;  margin: auto;
+            height:100px;
+        }
+        .menu-section{
+            width: 23%;
+            display: flex;
+            padding: 2%;
+            height:100vh;
+            overflow: auto;
+            position: fixed;
+            background-color: whitesmoke;
+            border-right: 1px solid lightgray;
+            flex-direction: column;
+        }
+        .menu-card{
+            display: flex;
+            margin:5% 1%;
+            width:70%;
+            padding:5% 2%;
+        }
+        .menu-card img{
+            margin: auto 1%;
+            height: 30px;
+            width: 30px;
+        }
+        .menu-card a{
+            text-align:center;
+            margin: auto 1%;
+            text-decoration:none;
+            color: steelblue;
+        }
+        .right{
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        .left{
+            align-self: flex-start;
+            flex-direction: row;
+        }
+
+        
+
+        .main-section{
+            border-left: 1px solid lightgray;
+            padding:2%;
+            width: 75%;
+            margin-left: 27%;
+        }
+        .wrapper{
+            padding: 70px 2% 2% 0%;
+            display: flex;
+            flex-direction: column;
+            width:100%;
+        }
+        .card{
+            display:flex;
+            /* margin: 5% 1%; */
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 2%;
+            flex-direction: column;
+        }
+        .sub-card{
+            display: flex;
+            height: auto;
+        }
+        .sub-card p{
+            margin: auto;
+            padding: 2%;
+            width: 90%;
+            text-align: justify;
+        }
+        
+        .no-display{
+            display:none;
+        }
+
+        .cls{
+            justify-content: space-evenly; flex-wrap: wrap; display: flex;
+            
+        }
+        .grp{
+            display: flex;
+            width: auto;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .links{
+            display: flex;
+            margin:2% ;
+            
+            width: fit-content;
+        }
+        .links a{
+            text-decoration: none;
+            margin: auto;
+        }
+        .sl{
+            width:25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: auto;
+            cursor: pointer;
+        }
+        .git{
+            background-image: url(./imgs/github.svg);
+        }
+        .linkedin{
+            background-image: url(./imgs/linkedin.svg);
+        }
+        .contact{
+            background-image: url(./imgs/telephone.svg);
+        }
+        .email{
+            background-image: url(./imgs/at.svg);
+        }
+        .table-holder{
+            overflow: auto;
+            width: 90%;
+            margin: 5% auto;
+        }
+        .table-holder table{
+            width: 630px;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        td{
+            padding: 10px 1px;
+            border: 1px solid lightgray;
+        }
+
+        .grp-2{
+            display: flex;
+            width: 95%;
+            justify-content: space-evenly;
+        }
+        .grp-2 ul {
+            display: flex;
+            list-style-type: none;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .grp-2 ul li{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2% 1%;
+        }
+        .grp-2 ul li img{
+            width: 65px;
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid lightgray;
+        }
+
+        .grp-1{
+            display: flex;
+            flex-direction: column;
+            padding :1%;
+        }
+        .card-x{
+            display: flex;
+            flex-direction: column;
+            padding: 2%;
+            border-bottom: 1px solid lightgray;
+        }
+        .card-x strong{
+            margin-bottom: 5px;
+        }
+        .card-x a{
+            text-decoration: none;
+            color:steelblue;
+            margin-bottom: 5px;
+        }
+        .card-x p{
+            text-align: justify;
+        }
+        
+        
+        @media only screen and (max-width:750px) {
+            .burger, .cross{
+                position :absolute;
+                background-color:white;
+                background-size: 100%;
+                border-radius: 2px;
+                border: 1px solid lightgray;
+                background-repeat: no-repeat;
+            }
+            .photo{
+                border-radius: 200px;
+                width: 200px;  margin: auto;
+                height:200px;
+            }
+            .cross{
+                width: 30px;
+                right: 15px;
+                top: 5%;
+                height: 30px;
+                background-image: url(./imgs/x-lg.svg);
+            }
+            .burger{
+                width: 30px;
+                left: 10px;
+                top: 30%;
+                height: 30px;
+                background-image: url(./imgs/list.svg);
+            }
+
+            #chk:checked ~ .menu-section{
+                left: 0;
+            }
+
+            .no-display{
+                display: block;
+            }
+            .menu-section{
+                position: relative;
+                width: 80%;
+                position: absolute;
+                height: 100vh;
+                transition: 0.5s all ease-in-out;
+                left:-100%;                
+            }
+            .main-section{
+                width: 95%;   margin-left: 0%;
+                
+            }
+            .sub-card{
+                flex-direction: column;
+            }
+            .cls{
+                font-size: 12px;
+            }
+            .left, .right{
+                align-self: flex-start;
+                flex-direction: row;
+                padding-left: 15%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" >
+            <label for="chk" onclick="bring_here()"class="burger no-display"></label>
+            
+            <h3>Resume of Arunangshu Biswas</h3>
+            <div class="cls" style="flex-wrap: nowrap; margin: auto 5%; width: 15%;">
+                
+                <div class="links" style="margin: 1% 5% ; ">
+                    <a href="https://github.com/Arunangshu13" target="_blank" class="sl git" id="git" ></a>
+                </div>
+                <div class="links" style="margin: 1% 5%;">
+                    <a  class="sl linkedin" href="https://www.linkedin.com/in/arunangshu-biswas-2b84a6202/" target="_blank" id="linkedin"></a>
+                </div>
+            </div>
+        </div>
+        <div class="sub-container" id="header">
+            <input type="checkbox" name="" id="chk" style="display:none;">
+            <div class="menu-section">
+                
+                <label for="chk" class="cross no-display"></label>
+                <div class="menu-card right">
+                    <img src="./imgs/person.svg" alt="">
+                    <a href="#aboutme" onclick="menu_fold();" >About me</a>
+                </div>
+                <div class="menu-card left">
+                    <img src="./imgs/reachme.svg" alt="">
+                    <a href="#reachme" onclick="menu_fold();" >Reach me</a>
+                </div>
+                <div class="menu-card right" >
+                    <img src="./imgs/book.svg" alt="">
+                    <a href="#edu" onclick="menu_fold();" >Education </a>
+                </div>
+                <div class="menu-card left">
+                    <img src="./imgs/skills.png" alt="">
+                    <a href="#skills" onclick="menu_fold();">Skills</a>
+                </div>
+                <div class="menu-card right">
+                    <img src="./imgs/journal-check.svg" alt="">
+                    <a href="#projects" onclick="menu_fold();">Projects</a>
+                </div>
+                <div class="menu-card left">
+                    <img src="./imgs/paper.png" alt="">
+                    <a href="#paper" onclick="menu_fold();">Paper published</a>
+                </div>
+            </div>
+            <div class="main-section ">
+                <div class="wrapper" id="aboutme">
+                    <div class="card" style="flex-direction: column; " >
+                        <h4>A brief info about me.</h4>
+                        <div class="sub-card">
+                            <img class="photo" src="./imgs/photo.jpg" alt="">
+                            <p>I keep interst in web development and software development to make solution which are simple yet important. I do believe that being an active member of the organization would give me an opportunity to contribute towards the growth of the organization in turn contributing to my personal growth. It would be my great pleaseure to build be a prt of an organization and keep </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper" id="reachme">
+                    <div class="card" >
+                        <h4>Contacts and social links </h4>
+                        <div class="cls">
+                            <div class="links">
+                                <label for="" class="sl contact"></label>
+                                <a href="#" >  &nbsp; +91 749889427</a>
+                            </div>
+                            <div class="links">
+                                <label for="" class="sl email"></label>
+                                <a href="https://mail.google.com/mail/?view=cm&to=arunangshu.biswas17@gmail.com&" target="_blank">&nbsp;arunangshu.biswas17@gmail.com </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper" id="edu">
+                    <div class="card" >
+                        <h4>Education qualification</h4>
+                        <div class="table-holder">
+                            <table>
+                                <tr>
+                                    <td>Institute/Univ. Name</td>
+                                    <td>Qualification</td>
+                                    <td>Period </td>
+                                    <td>Scores</td>
+                                </tr>
+                                <tr>
+                                    <td>Modern College of Engineering Pune (Pursuing)</td>
+                                    <td>M.C.A</td>
+                                    <td>2019-2022</td>
+                                    <td>83.5 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Fergusson college</td>
+                                    <td>B.Sc. Mathematics</td>
+                                    <td>2016-2019</td>
+                                    <td>93 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Nowrosjee Wadia College</td>
+                                    <td>12th</td>
+                                    <td>2014-2016</td>
+                                    <td>64 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Ornellas High School</td>
+                                    <td>10th</td>
+                                    <td>2013-2014</td>
+                                    <td>85 %</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper" id="skills">
+                    <div class="card" >
+                        <h4>Skill set</h4>
+                        <div class="grp-2">
+                            <ul>
+                                <li>
+                                    <img src="./imgs/js.png" alt="">
+                                    <p>Java Script</p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/php.png" alt="">
+                                    <p>PHP</p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/python.png" alt="">
+                                    <p>Python</p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/java.png" alt="">
+                                    <p>Java </p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/css.png" alt="">
+                                    <p>CSS </p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/django.png" alt="">
+                                    <p>Django </p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/flask.png" alt="">
+                                    <p>Flask </p>
+                                </li>
+                                <li>
+                                    <img src="./imgs/laravel.png" alt="">
+                                    <p>Laravel</p>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="wrapper"  id="projects">
+                    <div class="card">
+                        <h4>Projects</h4>
+                        <div class="grp-1">
+                            <div class="card-x">
+                                <h4>Learn Tech Website</h4>
+                                <strong><small>Jul 2021 - Jul 2021</small></strong>
+                                <a href="https://learntech.pythonanywhere.com">https://learntech.pythonanywhere.com</a>
+                                <p>
+                                    This is a django project hosted in pythonanywhere. This projects gives a platform availing multiple choice questions to its visitors on various technical field related topics.
+                                </p>
+                            </div>
+                            <div class="card-x">
+                                <h4>Laravel app</h4>
+                                <strong><small>Jul 2021 - Jul 2021</small></strong>
+                                <a href="http://cssnjs.epizy.com">http://cssnjs.epizy.com</a>
+                                <p>
+                                    This is a simple laravel application which keeps a collection of different ux a designs.
+                                </p>
+                            </div>
+                            <div class="card-x">
+                                <h4>Static js website</h4>
+                                <strong><small>Feb 2021 - Jun 2021</small></strong>
+                                <a href="http://js-world.epizy.com">http://js-world.epizy.com</a>
+                                <p>
+                                    This is a static website to show js applications and how js can be used apart from web development for building application at personal level and fun.
+                                </p>
+                            </div>
+                            <div class="card-x">
+                                <h4>Chocolate world</h4>
+                                <strong><small>Jun 2021 - Present</small></strong>
+                                <a href="http://chocoworld.pythonanywhere.com">http://chocoworld.pythonanywhere.com</a>
+                                <p>
+                                    This is a flask website which collects and share chocolate information around the world. It's dynamic and has a search option for searching your chocolate too.
+                                </p>
+                            </div>
+                            <div class="card-x">
+                                <h4>Blog</h4>
+                                <strong><small>Nov 2020 - Present</small></strong>
+                                <a href="http://www.slice-coding.rf.gd">http://www.slice-coding.rf.gd</a>
+                                <p>                    
+                                    The project is a website which is more or less like a library of mini projects in languages like java, javascript, php and few more. The project is under constant development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper" id="paper"> 
+                    <div class="card" >
+                        <h4>Paper</h4>
+                        <div class="card-x" style="border-bottom:0px;">
+                            <label for="">Review on parasitic computing" which can be found by the link provided</label>
+                        <a href="http://ijircce.com/get-current-issue.php?key=MTE2">http://ijircce.com/get-current-issue.php?key=MTE2</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script >
+        var chk=document.getElementById("chk");
+        function menu_fold(){
+            chk.checked=false;
+        }
+        function bring_here(){
+            window.location.href="#header";
+        }
+    </script>
+</body>
+</html>
